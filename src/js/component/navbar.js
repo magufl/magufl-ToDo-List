@@ -1,7 +1,7 @@
 import React from "react";
 export function Navbar() {
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
 			<a className="navbar-brand" href="#">
 				Navbar
 			</a>
@@ -60,7 +60,7 @@ export function Navbar() {
 						<a
 							className="nav-link disabled"
 							href="#"
-							tabindex="-1"
+							tabIndex="-1"
 							aria-disabled="true">
 							Disabled
 						</a>
