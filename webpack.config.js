@@ -1,22 +1,19 @@
 const webpack = require('webpack');
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var PrettierPlugin = require("prettier-webpack-plugin");
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const path = require('path');
+
 
 const port = 3000;
-let publicUrl = `http://localhost:${port}`;
-if(process.env.GITPOD_WORKSPACE_URL){
-  const [schema, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
-  publicUrl = `${port}-${host}`;
-}
+const [_, host] = process.env.GITPOD_WORKSPACE_URL.split('://') ?? null;
+const publicUrl = host ? `${port}-${host}`  : `http://localhost:${port}`;
+
 
 module.exports = {
-  entry: [
-    './src/js/index.js'
-  ],
+  mode: 'development',
+  entry: './src/js/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/'
   },
@@ -25,7 +22,7 @@ module.exports = {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader']
+          use: ['babel-loader']
         },
         {
           test: /\.(css|scss)$/, use: [{
@@ -35,7 +32,7 @@ module.exports = {
           }, {
               loader: "sass-loader" // compiles Sass to CSS
           }]
-        }, //css only files
+        },
         { 
           test: /\.(png|svg|jpg|gif)$/, use: {
             loader: 'file-loader',
@@ -50,11 +47,9 @@ module.exports = {
   },
   devtool: "source-map",
   devServer: {
-    contentBase:  './dist',
-    hot: true,
-    disableHostCheck: true,
-    historyApiFallback: true,
-    public: publicUrl
+    allowedHosts: 'all',
+    compress: true,
+    port: port,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -69,17 +64,18 @@ module.exports = {
     new HtmlWebpackPlugin({
         favicon: '4geeks.ico',
         template: 'template.html'
-    }),
-    new PrettierPlugin({
-      parser: "babel",
-      printWidth: 80,             // Specify the length of line that the printer will wrap on.
-      tabWidth: 4,                // Specify the number of spaces per indentation-level.
-      useTabs: true,              // Indent lines with tabs instead of spaces.
-      bracketSpacing: true,
-      extensions: [ ".js", ".jsx" ],
-      jsxBracketSameLine: true,
-      semi: true,                 // Print semicolons at the ends of statements.
-      encoding: 'utf-8'           // Which encoding scheme to use on files
-    }),
+    })
   ]
 };
+
+// new PrettierPlugin({
+//   parser: "babel",
+//   printWidth: 80,             // Specify the length of line that the printer will wrap on.
+//   tabWidth: 4,                // Specify the number of spaces per indentation-level.
+//   useTabs: true,              // Indent lines with tabs instead of spaces.
+//   bracketSpacing: true,
+//   extensions: [ ".js", ".jsx" ],
+//   jsxBracketSameLine: true,
+//   semi: true,                 // Print semicolons at the ends of statements.
+//   encoding: 'utf-8'           // Which encoding scheme to use on files
+// }),
