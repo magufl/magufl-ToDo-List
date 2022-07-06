@@ -1,8 +1,8 @@
-const webpack = require("webpack");
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
-const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const port = 3000;
 let publicUrl = `ws://localhost:${port}/ws`;
@@ -72,8 +72,8 @@ module.exports = {
     //   files: path.resolve(__dirname, "src"),
     // }),
     new HtmlWebpackPlugin({
-      favicon: "4geeks.ico",
-      template: "template.html",
+        favicon: '4geeks.ico',
+        template: 'template.html'
     }),
-  ],
+  ]
 };
