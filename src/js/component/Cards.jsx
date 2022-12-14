@@ -6,7 +6,7 @@ let Cards = () => {
         <div>
             <div class="container my-5">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <div class="card">
                             <img src="https://picsum.photos/500/325" class="card-img-top" alt="Card image" />
                             <div class="card-body text-center">
@@ -19,7 +19,7 @@ let Cards = () => {
                         </div>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <div class="card">
                             <img src="https://picsum.photos/500/325" class="card-img-top" alt="Card image" />
                             <div class="card-body text-center">
@@ -32,7 +32,7 @@ let Cards = () => {
                         </div>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <div class="card">
                             <img src="https://picsum.photos/500/325" class="card-img-top" alt="Card image" />
                             <div class="card-body text-center">
@@ -45,7 +45,7 @@ let Cards = () => {
                         </div>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <div class="card">
                             <img src="https://picsum.photos/500/325" class="card-img-top" alt="Card image" />
                             <div class="card-body text-center">
@@ -65,3 +65,14 @@ let Cards = () => {
 };
 
 export default Cards;
+
+{/* <div class="container my-5">
+  <div class="card-group">
+    <div class="col-3">
+      <div class="card">
+        ...
+      </div>
+    </div>
+    ...
+  </div>
+</div> */}
