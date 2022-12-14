@@ -10,11 +10,3 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
-
-@media only screen and (max-width: 480px) {
-    .card {
-      display: block;
-      margin-bottom: 20px;
-    }
-  }
-  
