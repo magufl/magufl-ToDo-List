@@ -1,7 +1,7 @@
 import React from "react";
 
 //include your components into your bundle
-import NavbarComponent from "./navbar.js";
+import NavbarComponent from "./navbar.jsx";
 import Jumbotron from "./jumbotron.jsx";
 
 //create your first component
