@@ -4,15 +4,23 @@ import React from "react";
 //include your components into your bundle
 //here we will import all our components to make the home page component <Home />
 import CardComponent from "./card.jsx";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 //create your first component
 const Home = () => {
 	return (
-        // a component always has to have only one parent node (tag) with every child and sibling nodes inside.
-        // hence this <div />, because we will add the other components inside Div
-		<div>
-			<CardComponent />
-		</div>
+       <Container>
+		<Row>
+			<Col> <CardComponent/></Col>
+			<Col> <CardComponent/></Col>
+			<Col> <CardComponent/></Col>
+			<Col> <CardComponent/></Col>
+		</Row>
+	   </Container>
+		
 	);
 };
 

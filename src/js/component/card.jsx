@@ -1,13 +1,14 @@
+
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Row from 'react-bootstrap/Row';
+
+import { Button } from 'react-bootstrap';
 
 function CardComponent() {
   return (
-    <CardGroup>
-        <Row xs={4} md={4} className="g-4">
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px325" />
+    
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -19,53 +20,7 @@ function CardComponent() {
                 <Button variant="primary">Find Out More!</Button>
         </Card.Footer>
       </Card>
-      </Row>  
-      <Row xs={4} md={4} className="g-4">
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px325" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-                <Button variant="primary">Find Out More!</Button>
-        </Card.Footer>
-      </Card>
-      </Row>  
-      <Row xs={4} md={4} className="g-4">
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px325" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-                <Button variant="primary">Find Out More!</Button>
-        </Card.Footer>
-      </Card>
-      </Row>
-      <Row xs={4} md={4} className="g-4">
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px325" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-                <Button variant="primary">Find Out More!</Button>
-        </Card.Footer>
-      </Card>
-      </Row>
-    </CardGroup>
+  
   );
 }
 
