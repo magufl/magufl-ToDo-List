@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 //create your first component
 const Jumbotron = props => {
@@ -13,10 +14,10 @@ const Jumbotron = props => {
 	);
 };
 
-/*Jumbotron.propTypes = {
+Jumbotron.propTypes = {
     header: PropTypes.string,
     description: PropTypes.string,
     buttonLabel: PropTypes.string
-}*/
+}
 
 export default Jumbotron;
