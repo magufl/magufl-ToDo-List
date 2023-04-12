@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 //create your first component
 const Home = () => {
 	const [newTodo, setNewTodo] = useState("");
 	const [todoList, setTodoList] = useState([]);
 	const [visible, setVisible] = useState([]);
+
+	useEffect(()=>{
+		getTodos();
+	}, [])
   
+	const getTodos = async () => {
+		const response = await fetch("https://assets.breatheco.de/apis/fake/todos/user/CL4UD3PT", {
+			method: "GET",
+			headers: {'Content-Type' : 'application/json'}
+		});
+		const data = await response.json();
+	}
+
 	const normalizeTodo = (e) => {
 	  let newTodo = e.target.value.toLowerCase();
 	  if (
