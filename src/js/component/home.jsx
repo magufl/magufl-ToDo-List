@@ -48,10 +48,10 @@ const Home = () => {
 			// });
 		}
 	}
+	
 	const normalizeTodo = (task) => {
 		if (task !== "") {
 	  		let newTodo = task.toLowerCase().trim();;
-			// setTodoList([...todoList, newTodo.charAt(0).toUpperCase() + newTodo.slice(1)]);
 			newTodo = newTodo.charAt(0).toUpperCase() + newTodo.slice(1);
 			return newTodo;
 	  	}
