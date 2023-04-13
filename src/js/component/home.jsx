@@ -3,42 +3,69 @@ import React, { useState, useEffect } from "react";
 //create your first component
 const Home = () => {
 	const [newTodo, setNewTodo] = useState("");
-	const [todoList, setTodoList] = useState([]);
+	const [todoList, setTodoList] = useState([{}]);
 	const [visible, setVisible] = useState([]);
 
+	const urlToAPI = "https://assets.breatheco.de/apis/fake/todos/user/CL4UD3PT";
+	const optionsGetTodos = {method: "GET",	headers: {'Content-Type' : 'application/json'}}
+
+
+	// get tasks from API at first time app loads
 	useEffect(()=>{
 		getTodos();
 	}, [])
-  
+
 	const getTodos = async () => {
-		const response = await fetch("https://assets.breatheco.de/apis/fake/todos/user/CL4UD3PT", {
-			method: "GET",
-			headers: {'Content-Type' : 'application/json'}
-		});
+		const response = await fetch(urlToAPI, optionsGetTodos);
 		const data = await response.json();
+		setTodoList(data);
 	}
 
-	const normalizeTodo = (e) => {
-	  let newTodo = e.target.value.toLowerCase();
-	  if (
-		e.key == "Enter" &&
-		newTodo !== ""
-	  ) {
-		setTodoList([...todoList, newTodo.charAt(0).toUpperCase() + newTodo.slice(1)]);
-		setNewTodo("");
-	  }
+	// add new task to API
+	const updateTodos = async (e, newTask) => {
+		if(e.key == "Enter"){
+			setNewTodo("");
+			let tasks = [...todoList, { label : newTask, done : false }];
+
+			const response = await fetch(urlToAPI, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json"},
+				body: JSON.stringify(tasks)
+			})
+			// .then(resp => {
+			// 	console.log(resp.ok); // will be true if the response is successfull
+			// 	console.log(resp.status); // the status code = 200 or code = 400 etc.
+			// 	console.log(resp.text()); // will try return the exact result as string
+			// 	return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+			// })
+			// .then(data => {
+			// 	//here is where your code should start after the fetch finishes
+			// 	console.log(data); //this will print on the console the exact object received from the server
+			// })
+			// .catch(error => {
+			// 	//error handling
+			// 	console.log(error);
+			// });
+		}
+	}
+	const normalizeTodo = (task) => {
+		if (task !== "") {
+	  		let newTodo = task.toLowerCase().trim();;
+			// setTodoList([...todoList, newTodo.charAt(0).toUpperCase() + newTodo.slice(1)]);
+			newTodo = newTodo.charAt(0).toUpperCase() + newTodo.slice(1);
+			return newTodo;
+	  	}
 	};
   
-	const handleMouseEnter = (index) => {
+	const handleTaskMouseEnter = (index) => {
 	  setVisible((prevState) => {
-		console.log(prevState)
 		const newState = [...prevState];
 		newState[index] = true;
 		return newState;
 	  });
 	};
   
-	const handleMouseLeave = (index) => {
+	const handleTaskMouseLeave = (index) => {
 	  setVisible((prevState) => {
 		const newState = [...prevState];
 		newState[index] = false;
@@ -62,7 +89,7 @@ const Home = () => {
 		  value={newTodo}
 		  placeholder={todoList.length <= 0 ? "No tasks, add a task!" : "Add a new todo"}
 		  onChange={(e) => setNewTodo(e.target.value)}
-		  onKeyUp={(e) => normalizeTodo(e)}
+		  onKeyUp={(e) => updateTodos(e, normalizeTodo(e.target.value))}
 		/>
 		<ul className="list-group mt-3 shadow">
 		  {todoList.map((todo, index) => {
@@ -70,12 +97,12 @@ const Home = () => {
 			  <li
 				className="list-group-item list-group-item-action d-flex justify-content-between align-items-center fs-5"
 				key={index}
-				onMouseEnter={() => handleMouseEnter(index)}
-				onMouseLeave={() => handleMouseLeave(index)}
+				onMouseEnter={() => handleTaskMouseEnter(index)}
+				onMouseLeave={() => handleTaskMouseLeave(index)}
 			  >
-				{todo}
+				{todo.label}
 				<i
-				  className={`remove-btn bi bi-x fs-3 text-danger ${visible[index] ? "" : "invisible"}`}
+				  className={`remove-btn fa-regular fa-circle-xmark fs-3 text-danger ${visible[index] ? "" : "invisible"}`}
 				  onClick={() => removeTodo(index)}
 				></i>
 			  </li>
