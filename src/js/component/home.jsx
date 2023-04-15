@@ -5,6 +5,8 @@ const Home = () => {
 	const [newTodo, setNewTodo] = useState("");
 	const [todoList, setTodoList] = useState([{}]);
 	const [visible, setVisible] = useState([]);
+	const [clearedAllTasks, setClearedAllTasks] = useState(false);
+	const hiddenTask = [{label: 'hidden', done: false, hidden: true}];
 
 	// API constants and variables
 	const urlToAPI = "https://assets.breatheco.de/apis/fake/todos/user/CL4UD3PT";
@@ -58,7 +60,7 @@ const Home = () => {
 
 	// update tasks at backend API
 	// not optimized for large lists cause it's sending and retrieving the entire list
-	const updateTodos = async (list = todoList) => {	
+	const updateTodos = async (list = todoList, clearTasks = false) => {	
 		console.table(list);
 		const response = await fetch(urlToAPI, {
 			method: "PUT",
@@ -70,6 +72,7 @@ const Home = () => {
 		if(response.ok) {
 			setTodoList(list);
 			setNewTodo("");
+			setClearedAllTasks(clearTasks);
 		}
 	}
   
@@ -91,7 +94,41 @@ const Home = () => {
   
 	return (
 	  <div className="container text-center col-6 vh-100">
+		<div className="d-flex justify-content-between align-items-center p-3">
 		<h1>Todo List</h1>
+		<div>
+            {/* <!-- Button trigger modal --> */}
+            <button type="button" className="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Clear tasks!
+            </button>
+
+            {/* <!-- Modal --> */}
+            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Tasks cleaner</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+							{!clearedAllTasks
+								? "Are you sure that you want to clear all tasks?"
+								: "All tasks were cleared!"
+							}
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => setInterval(()=> setClearedAllTasks(false), 1000)}>Close</button>
+							{!clearedAllTasks
+								? <button type="button" className={`btn ${clearedAllTasks?"btn-success":"btn-warning"}`} onClick={() => updateTodos(hiddenTask, true)}>Clear</button>
+								: ""
+							}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		</div>
+		<div className="row">
 		<input
 		  className="w-100 form-control"
 		  value={newTodo}
@@ -99,6 +136,7 @@ const Home = () => {
 		  onChange={(e) => setNewTodo(e.target.value)}
 		  onKeyUp={(e) => handleNewTodoList(e)}
 		/>
+		</div>
 		<ul className="list-group mt-3 shadow">
 		  {todoList.map((todo, index) => {
 			if(!todo.hidden){
