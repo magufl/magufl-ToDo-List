@@ -26,16 +26,12 @@ const Home = () => {
 
 	// Handle new todo
 	const handleNewTodoList = (e) => {
-		// remove white spaces around todo
 		let todo = e.target.value;
-		console.log('before normalize', todo);
 		
 		// todo must have at least one letter or a number
 		let regex = /^(?=.*[a-zA-Z0-9]).+$/;
 		if (regex.test(todo)) {
 			todo = normalizeTodo(todo);
-
-			
 			
 			// todo must be unique to add to todoList and update API
 			if (todoList.filter(t => t.label === todo).length === 0 && e.key === 'Enter'){
@@ -132,7 +128,7 @@ const Home = () => {
 		<input
 		  className="w-100 form-control"
 		  value={newTodo}
-		  placeholder={todoList.length <= 0 ? "No tasks, add a task!" : "Add a new todo"}
+		  placeholder={todoList.length <= 1 ? "No tasks, add a task!" : "Add a new todo"}
 		  onChange={(e) => setNewTodo(e.target.value)}
 		  onKeyUp={(e) => handleNewTodoList(e)}
 		/>
