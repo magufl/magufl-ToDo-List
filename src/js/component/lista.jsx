@@ -11,9 +11,10 @@ const Lista = () => {
   }, []);
 
   const obtenerLista = () => {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/paztastica")
+    fetch("https://playground.4geeks.com/apis/fake/todos/user/")
       .then((response) => response.json())
       .then((data) => {
+        console.log("Dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         console.log(data);
         setTareas(data);
       })
@@ -23,8 +24,9 @@ const Lista = () => {
   };
 
   const iniciar = () => {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/paztastica", {
-      method: "POST",
+    console.log("Estoy en iniciar");
+    fetch("https://playground.4geeks.com/apis/fake/todos/user/", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
@@ -41,24 +43,34 @@ const Lista = () => {
   };
 
   const guardarListaTareas = () => {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/paztastica", {
+    console.log("llegue aqui");
+    console.log(tareas);
+    fetch("https://playground.4geeks.com/apis/fake/todos/user/hectorlabra", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(tareas),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Lista guardada exitosamente:", data);
+   
+      .then(resp => {
+        console.log(resp.ok); // will be true if the response is successfull
+        console.log(resp.status); // the status code = 200 or code = 400 etc.
+        console.log(resp.text()); // will try return the exact result as string
+        return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
       })
+    
+      .then(data => {
+        //here is where your code should start after the fetch finishes
+        console.log(data); //this will print on the console the exact object received from the server
+    })
       .catch((error) => {
         console.log(error);
       });
   };
 
   const eliminarListaTareas = () => {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/paztastica", {
+    fetch("https://playground.4geeks.com/apis/fake/todos/user/hectorlabra", {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -124,10 +136,10 @@ const Lista = () => {
           onClick={guardarListaTareas}
           className="btn btn-primary text-center"
         >
-          Guardar 
+          Guardar
         </button>
         <button onClick={eliminarListaTareas} className="btn btn-danger">
-          Eliminar 
+          Eliminar
         </button>
       </div>
     </div>
