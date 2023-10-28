@@ -12,7 +12,7 @@ const Home = () => {
           <a className="navbar-brand" href="#">
             Start Bootstrap
           </a>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#">
@@ -53,7 +53,7 @@ const Home = () => {
                   up the bulk of the card's content.
                 </p>
               </div>
-              <div className="card-body text-center">
+              <div className="card-body text-center bg-light">
                 <button className="btn btn-primary">
                   Find Out More!
                 </button>
@@ -70,7 +70,7 @@ const Home = () => {
                   up the bulk of the card's content.
                 </p>
               </div>
-              <div className="card-body text-center">
+              <div className="card-body text-center bg-light">
                 <button className="btn btn-primary">
                   Find Out More!
                 </button>
@@ -87,7 +87,7 @@ const Home = () => {
                   up the bulk of the card's content.
                 </p>
               </div>
-              <div className="card-body text-center">
+              <div className="card-body text-center bg-light">
                 <button className="btn btn-primary">
                   Find Out More!
                 </button>
@@ -104,7 +104,7 @@ const Home = () => {
                   up the bulk of the card's content.
                 </p>
               </div>
-              <div className="card-body text-center">
+              <div className="card-body text-center bg-light">
                 <button className="btn btn-primary">
                   Find Out More!
                 </button>
