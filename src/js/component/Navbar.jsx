@@ -3,8 +3,8 @@ import React from "react";
 export const Navbar = () => {
 
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div className="container" id="headerNavB">
                 <a className="navbar-brand fw-bolder" href="#">
                     Start Bootstrap
                 </a>
