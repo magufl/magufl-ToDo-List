@@ -11,9 +11,9 @@ export const Card = (props) => {
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur cupiditate officiis, odit, soluta adipisci, sapiente eum aliquid rem officia.
                 </p>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <a href="#" class="btn btn-primary">Find out more</a>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                    <a href="#" className="btn btn-primary">Find out more</a>
                 </li>
             </ul>
        </div>
