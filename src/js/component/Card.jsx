@@ -13,7 +13,7 @@ export const Card = (props) => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <a href="#" class="btn btn-success">Find out more</a>
+                    <a href="#" class="btn btn-primary">Find out more</a>
                 </li>
             </ul>
        </div>
