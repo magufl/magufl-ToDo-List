@@ -4,7 +4,7 @@ import "../../styles/index.css";
 const Cards = () => {
 
     return (
-        <div className="cartas-contenedor">
+        <div className="cartas-contenedor container p-0">
             <div className="card" style={styles}>
                 <img src="https://placehold.it/500x325" className="card-img-top" alt="..." />
                 <div className="card-body">

@@ -1,10 +1,19 @@
 /* Componente (Cards)*/
 .cartas-contenedor{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
+
+@media (max-width: 767px) {
+    .cartas-contenedor {
+      justify-content: center;
+    }
+  }
+  
+
 .button-container{
     background-color: rgb(240, 236, 236);
     padding: 10px 0;
@@ -13,10 +22,6 @@
 
 .button{
     border-radius: 2px;
-}
-
-.card{
-    margin: 15px;
 }
 
 .card-text{
@@ -48,24 +53,35 @@
 body{
     display:grid;
     min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
 }
+
+
+
+
 
 .jumbotron{
     background-color: rgb(237, 232, 232);
-    width: 82%;
     height:300px;
-    margin: 30px;
-    margin-top: 7px;
-    text-align: left;
     padding: 20px;
-    align-items: center;
-    margin-left: 140px;
- 
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: start;
  }
+
+ .titulo{
+    font-weight: 350;
+ }
+
  .navbar-nav{
      opacity: 0.8;
-     float:right;
      padding: 0;
      margin:0;
+ }
+
+ .navbar-hijo{
+    text-align: start;
+ }
+
+ .navbar-links{
+    flex-grow: 0;
  }
