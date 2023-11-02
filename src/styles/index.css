@@ -34,6 +34,7 @@
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    padding: 1em;
 }
 
 
@@ -43,3 +44,28 @@
     display: flex;
     flex-direction: column;
 }
+
+body{
+    display:grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+}
+
+.jumbotron{
+    background-color: rgb(237, 232, 232);
+    width: 82%;
+    height:300px;
+    margin: 30px;
+    margin-top: 7px;
+    text-align: left;
+    padding: 20px;
+    align-items: center;
+    margin-left: 140px;
+ 
+ }
+ .navbar-nav{
+     opacity: 0.8;
+     float:right;
+     padding: 0;
+     margin:0;
+ }
