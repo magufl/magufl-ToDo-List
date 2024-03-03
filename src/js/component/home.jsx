@@ -1,19 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
+	const [ inputValue, setInputValue] = useState("");
+	const [todos,setTodos] = useState([]);
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">
-				To do list:
-			</h1>
+		<div className="container">
+			<h1>My to dos</h1>
 			<hr />
-			<input type="text" placeholder="Escribe una tarea" />
-			<button type="button">Enviar tarea</button>
+			<input
+			 	type="text" 
+				onChange={(e) => setInputValue(e.target.value)}
+				value={inputValue}
+				onKeyDown={(e)=> e.key ==="Enter" ? setTodos(todos.concat(inputValue))+ setInputValue(""):null}
+
+				placeholder="What you do need to do?" 
+				/>
+			<ul>
+				{todos.map((item,index) =>(
+				
+					<li key={item}>{item} <i onClick={() =>
+					setTodos(todos.filter(
+						(t,currentIndex)=> 
+						index != currentIndex
+						))} className="fas fa-trash"></i></li>
+				
+				))}	
+			</ul>
 			
+			<div>{todos.length} tasks </div>
 		</div>
 	);
 };
