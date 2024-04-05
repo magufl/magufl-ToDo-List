@@ -4,7 +4,7 @@ ports:
     visibility: public
 
 tasks:
-  - before: nvm install 16
+  - before: nvm install 20
     init: npm install
     command: npm run start
 
