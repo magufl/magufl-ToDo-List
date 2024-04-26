@@ -17,6 +17,9 @@ export const TodoList = () => {
     event.preventDefault();
     tarea.trim() !== '' ? setListado([...listado, tarea]) & setTarea ('') : setTarea ('')
    }
+   const borrarTarea = (item) => {
+    setListado (listado.filter ((element) => element !== item))
+   }
 
     //4. return de lo que queramos que haga
     return (
@@ -25,16 +28,15 @@ export const TodoList = () => {
             <form className="my-2" onSubmit={handleSubmit}>
                 <h1 className="text-center">Your To Do list👇</h1>
                 <div className="mb-3 ">
-                    <label htmlFor="exampleInputEmail1" className="form-label">ii</label>
                     <input type="text" className="form-control" id="task-input" placeholder="Add your new task" aria-describedby="emailHelp" value={tarea} onChange={handleTarea}/>
                 </div>                
             </form>
             <h2>All your tasks:</h2>
             <ul className="list-group mt-2">
-                {listado.map((item, id) => <li key={id} className="list-group-item">
+                {listado.map((item, id) => <li key={id} className="list-group-item d-flex justify-content-between hidden-icon">
                     {item} 
-                    <span>
-                    <i className="fa-solid fa-trash"></i>
+                    <span onClick={() => borrarTarea(item)}>
+                    <i className="fas fa-trash text-danger text-end"></i>
                     </span>
                 </li>)}
 
