@@ -9,7 +9,7 @@ export const TodoList = () => {
     //3. código js que necesitamos
     //delarar estados uno para cada input
     const [tarea, setTarea] = useState (" ");
-    const [listado, setListado] = useState (['hola', 'adios']);
+    const [listado, setListado] = useState (['Revisar el repo de MAR', 'Aprobar la tarea de MAR:)']);
     function handleTarea (){
         setTarea (event.target.value)
     }
